@@ -21,8 +21,7 @@
  * 95011 Cergy-Pontoise cedex
  * FRANCE
  *
- * Adds to the course a section where the teacher can submit a problem to groups of students
- * and give them various collaboration tools to work together on a solution.
+ * A block to put on the dashboard that adds buttons to create a collaborative or personal space.
  *
  * @package   block_persocollab
  * @copyright 2017 Laurent Guillet <laurent.guillet@u-cergy.fr>
@@ -72,10 +71,32 @@ class block_persocollab extends block_base {
         }
 
         $this->content = new stdClass;
-        $this->content->text .= '<div style="float:left;margin-right:50px">';
+
+        if (has_capability('block/persocollab:addperso', context_system::instance()) && !$hascourseperso) {
+
+            $this->content->text = '';
+            $mform = new perso_form();
+
+            if ($mform->get_data()) {
+
+                $persospace = create_perso();
+
+                if ($persospace) {
+
+                    $redirecturl = new moodle_url('/course/view.php', array('id' => $persospace->id));
+                    redirect($redirecturl);
+                }
+            } else {
+
+                $mform->set_data(null);
+
+                $this->content->text .= $mform->render();
+            }
+        }
+
         if (has_capability('block/persocollab:addcollab', context_system::instance())) {
 
-            $this->content->text .= '';
+            $this->content->text = '';
             $mform = new collab_form();
 
             if ($fromform = $mform->get_data()) {
@@ -91,41 +112,34 @@ class block_persocollab extends block_base {
                 }
             } else {
 
-                $mform->set_data();
-
-                $this->content->text .= $mform->render();
-            }
-        }        
-        $this->content->text .= '</div>';
-
-        if (has_capability('block/persocollab:addperso', context_system::instance()) && !$hascourseperso) {
-            $this->content->text .= '';
-            $mform = new perso_form();
-
-            if ($mform->get_data()) {
-
-                $persospace = create_perso();
-                if ($persospace) {
-                    $redirecturl = new moodle_url('/course/view.php', array('id' => $persospace->id));
-                    redirect($redirecturl);
-                }
-            } else {
-
-                $mform->set_data();
+                $mform->set_data(null);
 
                 $this->content->text .= $mform->render();
             }
         }
 
-
-
-        
         return $this->content;
     }
 
     public function has_config() {
 
         return true;
+    }
+
+    public function specialization() {
+
+        $systemcontext = context_system::instance();
+
+        if (isset($this->config)) {
+
+            if (has_capability('block/persocollab:addcollab', $systemcontext)) {
+
+                $this->title = get_string('collabtitle', 'block_persocollab');
+            } else {
+
+                $this->title = get_string('persotitle', 'block_persocollab');
+            }
+        }
     }
 
 }

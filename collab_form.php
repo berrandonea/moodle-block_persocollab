@@ -21,8 +21,7 @@
  * 95011 Cergy-Pontoise cedex
  * FRANCE
  *
- * Adds to the course a section where the teacher can submit a problem to groups of students
- * and give them various collaboration tools to work together on a solution.
+ * A block to put on the dashboard that adds buttons to create a collaborative or personal space.
  *
  * @package   block_persocollab
  * @copyright 2017 Laurent Guillet <laurent.guillet@u-cergy.fr>
@@ -49,7 +48,7 @@ class collab_form extends moodleform {
         $this->add_action_buttons(false, get_string('createcollab', 'block_persocollab'));
     }
 
-    public function validation() {
+    public function validation($data, $files) {
 
         return array();
     }
