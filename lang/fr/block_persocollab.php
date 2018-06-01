@@ -57,5 +57,5 @@ $string['defaultmailcontentcollab'] = "Pour toute demande ou information, nous v
         . " dans la catégorie <strong>SEFIAP -> Applications pédagogiques</strong>.";
 
 $string['endofcollabmail'] = 'Contenu de fin du mail envoyé lors de la création d\'un espace collaboratif.';
-$string['collabtitle'] = 'Espaces collaboratifs';
-$string['persotitle'] = 'Espace personnel';
+$string['collabtitle'] = 'Créer mon espace personnel';
+$string['persotitle'] = 'Créer un espace collaboratif';

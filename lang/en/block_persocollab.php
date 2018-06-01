@@ -52,5 +52,5 @@ $string['mailcontent'] = 'Hello, <br><br>'
             This is an automatic message. Please do not answer.<br>';
 
 $string['endofcollabmail'] = 'End of the mail sent to users who created a collaborative space';
-$string['collabtitle'] = 'Collaboratives spaces';
-$string['persotitle'] = 'Personal space';
+$string['collabtitle'] = 'Create a collaborative space';
+$string['persotitle'] = 'Create my personal space';
