@@ -54,3 +54,5 @@ $string['mailcontent'] = 'Hello, <br><br>'
 $string['endofcollabmail'] = 'End of the mail sent to users who created a collaborative space';
 $string['collabtitle'] = 'Create a collaborative space';
 $string['persotitle'] = 'Create my personal space';
+$string['addcollab'] = 'Can add a collaborative space';
+$string['addperso'] = 'Can add a personal space';
