@@ -61,3 +61,4 @@ $string['collabtitle'] = 'Créer un espace collaboratif';
 $string['persotitle'] = 'Créer mon espace personnel';
 $string['persocollab:addcollab'] = 'Ajout d\'un espace collaboratif';
 $string['persocollab:addperso'] = 'Ajout d\'un espace personnel';
+$string['privacy:metadata'] = 'Le bloc ne stocke pas de données personnelle.';

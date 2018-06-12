@@ -56,3 +56,4 @@ $string['collabtitle'] = 'Create a collaborative space';
 $string['persotitle'] = 'Create my personal space';
 $string['persocollab:addcollab'] = 'Can add a collaborative space';
 $string['persocollab:addperso'] = 'Can add a personal space';
+$string['privacy:metadata'] = 'The block does not store data.';

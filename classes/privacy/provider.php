@@ -27,12 +27,23 @@
  * @copyright 2017 Laurent Guillet <laurent.guillet@u-cergy.fr>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
- * File : version.php
- * Version file
+ * File : provider.php
+ * RGPD file
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component = 'block_persocollab';
-$plugin->version = 2018061200;
-$plugin->requires = 2017111300;
+namespace block_persocollab\privacy;
+
+class provider implements \core_privacy\local\metadata\null_provider {
+
+    /**
+     * Get the language string identifier with the component's language
+     * file to explain why this plugin stores no data.
+     *
+     * @return  string
+     */
+    public static function get_reason() : string {
+        return 'privacy:metadata';
+    }
+}
