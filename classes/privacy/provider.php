@@ -31,8 +31,6 @@
  * RGPD file
  */
 
-defined('MOODLE_INTERNAL') || die();
-
 namespace block_persocollab\privacy;
 
 class provider implements \core_privacy\local\metadata\null_provider {
