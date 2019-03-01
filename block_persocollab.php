@@ -300,10 +300,6 @@ function choose_idnumber($firstidnumber, $i, $collabtitle) {
         return choose_idnumber($firstidnumber, $i + 1, $collabtitle);
     } else {
 
-        echo $idnumber."\n";
-        echo $shortname."\n";
-        exit;
-
         return $i;
     }
 }
