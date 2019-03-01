@@ -286,19 +286,22 @@ function choose_idnumber($firstidnumber, $i, $collabtitle) {
     global $DB;
 
     $idnumber = $firstidnumber;
+    $shortname = trim($collabtitle);
 
     if ($i) {
 
         $idnumber .= $i;
+        $shortname .= '_$i';
     }
 
     if ($DB->record_exists('course', array('idnumber' => $idnumber)) ||
-            $DB->record_exists('course', array('shortname' => trim($collabtitle)."_$i"))) {
+            $DB->record_exists('course', array('shortname' => $shortname))) {
 
         return choose_idnumber($firstidnumber, $i + 1, $collabtitle);
     } else {
 
-        echo $i;
+        echo $idnumber.'\n';
+        echo $shortname.'\n';
         exit;
 
         return $i;
