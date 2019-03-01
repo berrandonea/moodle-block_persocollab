@@ -238,7 +238,6 @@ function create_collab($collabtitle) {
 
     if ($i == 0) {
 
-
         $idnumber = $firstidnumber;
         $coursedata->fullname = trim($collabtitle);
         $coursedata->shortname = trim($collabtitle);
@@ -287,6 +286,7 @@ function choose_idnumber($firstidnumber, $i, $collabtitle) {
     global $DB;
 
     $idnumber = $firstidnumber;
+
     if ($i) {
 
         $idnumber .= $i;
@@ -297,6 +297,9 @@ function choose_idnumber($firstidnumber, $i, $collabtitle) {
 
         return choose_idnumber($firstidnumber, $i + 1, $collabtitle);
     } else {
+
+        echo $i;
+        exit;
 
         return $i;
     }
