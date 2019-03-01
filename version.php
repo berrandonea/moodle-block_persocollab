@@ -34,5 +34,5 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'block_persocollab';
-$plugin->version = 2018061200;
+$plugin->version = 2019030100;
 $plugin->requires = 2017111300;

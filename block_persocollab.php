@@ -232,7 +232,7 @@ function create_collab($collabtitle) {
     }
 
     $firstidnumber = 'COLLAB-'.$firstnamefirstletters.$year.$lastnamefirstletter;
-    $i = choose_idnumber($firstidnumber, 0);
+    $i = choose_idnumber($firstidnumber, 0, $collabtitle);
 
     $coursedata = new stdClass;
 
@@ -282,7 +282,7 @@ function create_collab($collabtitle) {
     return $collabspace;
 }
 
-function choose_idnumber($firstidnumber, $i) {
+function choose_idnumber($firstidnumber, $i, $collabtitle) {
 
     global $DB;
 
@@ -292,9 +292,10 @@ function choose_idnumber($firstidnumber, $i) {
         $idnumber .= $i;
     }
 
-    if ($DB->record_exists('course', array('idnumber' => $idnumber))) {
+    if ($DB->record_exists('course', array('idnumber' => $idnumber)) ||
+            $DB->record_exists('course', array('shortname' => trim($collabtitle)."_$i"))) {
 
-        return choose_idnumber($firstidnumber, $i + 1);
+        return choose_idnumber($firstidnumber, $i + 1, $collabtitle);
     } else {
 
         return $i;
