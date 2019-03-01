@@ -291,7 +291,7 @@ function choose_idnumber($firstidnumber, $i, $collabtitle) {
     if ($i) {
 
         $idnumber .= $i;
-        $shortname .= '_$i';
+        $shortname .= "_$i";
     }
 
     if ($DB->record_exists('course', array('idnumber' => $idnumber)) ||
@@ -300,8 +300,8 @@ function choose_idnumber($firstidnumber, $i, $collabtitle) {
         return choose_idnumber($firstidnumber, $i + 1, $collabtitle);
     } else {
 
-        echo $idnumber.'\n';
-        echo $shortname.'\n';
+        echo $idnumber."\n";
+        echo $shortname."\n";
         exit;
 
         return $i;
