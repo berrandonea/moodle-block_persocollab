@@ -232,23 +232,21 @@ function create_collab($collabtitle) {
     }
 
     $firstidnumber = 'COLLAB-'.$firstnamefirstletters.$year.$lastnamefirstletter;
-    $idnumber = choose_idnumber($firstidnumber, 0);
+    $i = choose_idnumber($firstidnumber, 0);
 
     $coursedata = new stdClass;
 
-    if ($idnumber == $firstidnumber) {
+    if ($i == 0) {
 
+
+        $idnumber = $firstidnumber;
         $coursedata->fullname = trim($collabtitle);
         $coursedata->shortname = trim($collabtitle);
     } else {
 
-        $firstidnumbersize = strlen($firstidnumber);
-        $idnumbersize = strlen($idnumber);
-        $difference = $firstidnumbersize - $idnumbersize;
-        $number = substr($idnumber, $difference);
-
-        $coursedata->fullname = trim($collabtitle)."_$number";
-        $coursedata->shortname = trim($collabtitle)."_$number";
+        $idnumber = $firstidnumber.$i;
+        $coursedata->fullname = trim($collabtitle)."_$i";
+        $coursedata->shortname = trim($collabtitle)."_$i";
     }
 
     $coursedata->category = $collabid;
@@ -294,14 +292,12 @@ function choose_idnumber($firstidnumber, $i) {
         $idnumber .= $i;
     }
 
-    $already = $DB->get_record('course', array('idnumber' => $idnumber));
-
-    if ($already) {
+    if ($DB->record_exists('course', array('idnumber' => $idnumber))) {
 
         return choose_idnumber($firstidnumber, $i + 1);
     } else {
 
-        return $idnumber;
+        return $i;
     }
 }
 
